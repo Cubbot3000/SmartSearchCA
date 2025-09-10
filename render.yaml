@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: smartsearch-proxy
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: "npm ci"
+    startCommand: "npm start"
+    healthCheckPath: "/health"
+    envVars:
+      - key: API_BASE
+        value: https://api2.smartsearchonline.com/openapi/v1
+      - key: API_KEY
+        sync: false
+      - key: SS_USERNAME
+        sync: false
+      - key: SS_PASSWORD
+        sync: false
+      - key: CORS_ORIGIN
+        value: "*"
